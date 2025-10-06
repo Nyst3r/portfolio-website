@@ -21,8 +21,8 @@ export const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I'm a software engineering graduate from École de technologie supérieure (ÉTS) with a passion for solving
-            challenging problems and building robust backend systems that just work.
+            I'm a software engineering graduate from ÉTS with a passion for solving challenging problems 
+            and building reliable, efficient software and applications that just work.
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">
