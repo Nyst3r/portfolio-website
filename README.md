@@ -1,4 +1,4 @@
-# Ny Hanjara Randriakoto Portfolio
+# Portfolio website
 
 Welcome to my personal portfolio website, built with **React**, **Vite**, and **TailwindCSS**.  
 You can visit it live at: [nyhanjararandriakoto.com](https://nyhanjararandriakoto.com)
