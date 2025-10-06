@@ -4,7 +4,7 @@ const projects = [
   {
     id: 1,
     title: "Personnal website",
-    description: "My portfolio website that I built using React, TailwindCSS and Vite. It showcases my projects, skills, and contact information with smooth animations and a clean, user-friendly design.",
+    description: "This is my portfolio website that I built using React, TailwindCSS and Vite. It showcases my projects, skills, and contact information with smooth animations and a clean, user-friendly design.",
     image: "/projects/project1.png",
     tags: ["React", "TailwindCSS", "Javascript", "HTML"],
     demoUrl: "#",
