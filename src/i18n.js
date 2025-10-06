@@ -77,6 +77,10 @@ i18n
                 description: "Building...",
               },
             ],
+            comingSoon: {
+              title: "More coming soon...",
+              description: "Stay tuned for future projects!",
+            },
           },
           skills: {
             title: {
@@ -177,6 +181,10 @@ i18n
                 description: "En construction...",
               },
             ],
+            comingSoon: {
+              title: "Plus à venir...",
+              description: "Restez à l'affut pour les futurs projets !",
+            },
           },
           skills: {
             title: {
