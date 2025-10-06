@@ -1,31 +1,33 @@
-import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
-
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
-];
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("ENG");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleLanguage = () => {
-    setLanguage(language === "ENG" ? "FR" : "ENG");
+    const newLang = i18n.language === "ENG" ? "FR" : "ENG";
+    i18n.changeLanguage(newLang);
   };
+
+  const nextLanguage = i18n.language === "ENG" ? "FR" : "ENG";
+
+  const navItems = [
+    { name: t("navbar.home"), href: "#hero" },
+    { name: t("navbar.about"), href: "#about" },
+    { name: t("navbar.projects"), href: "#projects" },
+    { name: t("navbar.skills"), href: "#skills" },
+    { name: t("navbar.contact"), href: "#contact" },
+  ];
 
   return (
     <nav
@@ -35,10 +37,8 @@ export const Navbar = () => {
       )}
     >
       <div className="container flex items-center justify-between">
-        <a className="text-xl font-bold text-primary flex items-center" href="#hero">
-          <span className="relative z-10">
-            <span className="text-foreground">Ny Hanjara Randriakoto</span>
-          </span>
+        <a className="text-xl font-bold flex items-center" href="#hero">
+          Ny Hanjara Randriakoto
         </a>
 
         {/* Language toggle */}
@@ -47,15 +47,15 @@ export const Navbar = () => {
             onClick={toggleLanguage}
             className="px-3 py-1 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background transition"
           >
-            {language}
+            {nextLanguage}
           </button>
         </div>
 
         {/* Desktop nav */}
         <div className="hidden md:flex space-x-8">
-          {navItems.map((item, key) => (
+          {navItems.map((item) => (
             <a
-              key={key}
+              key={item.href}
               href={item.href}
               className="text-foreground/80 hover:text-primary transition-colors duration-300"
             >
@@ -80,9 +80,9 @@ export const Navbar = () => {
           )}
         >
           <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
+            {navItems.map((item) => (
               <a
-                key={key}
+                key={item.href}
                 href={item.href}
                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
@@ -90,11 +90,16 @@ export const Navbar = () => {
                 {item.name}
               </a>
             ))}
+
+            {/* Mobile language toggle */}
             <button
-              onClick={toggleLanguage}
+              onClick={() => {
+                toggleLanguage();
+                setIsMenuOpen(false);
+              }}
               className="px-4 py-2 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background mt-4"
             >
-              {language}
+              {nextLanguage}
             </button>
           </div>
         </div>
