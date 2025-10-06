@@ -16,7 +16,7 @@ export const AboutSection = () => {
             </h3>
 
             <p className="text-muted-foreground">
-              I'm a software engineering graduate from ÉTS with experience in
+              I'm a software engineering graduate from École de technologie supérieure (ÉTS) with experience in
               backend and full-stack development. I've contributed to multiple
               projects using C#, .NET, React Native, Javascript, Java and other modern
               technologies, focusing on creating scalable and efficient
