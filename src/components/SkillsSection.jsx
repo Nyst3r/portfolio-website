@@ -14,6 +14,7 @@ const skills = [
   { name: "C#", level: 85, category: "backend" },
   { name: ".NET / .NET Core", level: 80, category: "backend" },
   { name: "Java", level: 85, category: "backend" },
+  { name: "Python", level: 85, category: "backend" },
   { name: "Node.js", level: 75, category: "backend" },
   { name: "REST API", level: 80, category: "backend" },
   { name: "MongoDB", level: 70, category: "backend" },
@@ -53,7 +54,7 @@ export const SkillsSection = () => {
               key={key}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                "px-5 py-2 rounded-full transition-colors duration-300 capitalize  cursor-pointer",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary/70 text-foreground hover:bd-secondary"
