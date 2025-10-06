@@ -2,33 +2,53 @@ import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 export const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Update navbar on scroll
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when menu is open
+  // Lock scroll when mobile menu open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
+
+  // Initialize theme from localStorage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setIsDarkMode(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setIsDarkMode(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      setIsDarkMode(true);
+    }
+  };
 
   const toggleLanguage = () => {
     const newLang = i18n.language === "ENG" ? "FR" : "ENG";
     i18n.changeLanguage(newLang);
   };
-
   const nextLanguage = i18n.language === "ENG" ? "FR" : "ENG";
 
   const navItems = [
@@ -54,18 +74,8 @@ export const Navbar = () => {
           Ny Hanjara Randriakoto
         </a>
 
-        {/* Desktop language toggle */}
-        <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
-          <button
-            onClick={toggleLanguage}
-            className="px-3 py-1 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background transition"
-          >
-            {nextLanguage}
-          </button>
-        </div>
-
         {/* Desktop nav */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -75,6 +85,17 @@ export const Navbar = () => {
               {item.name}
             </a>
           ))}
+
+          {/* Desktop Theme Toggle */}
+          <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+
+          {/* Desktop language toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="px-3 py-1 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background transition"
+          >
+            {nextLanguage}
+          </button>
         </div>
 
         {/* Mobile menu button */}
@@ -94,7 +115,7 @@ export const Navbar = () => {
               : "opacity-0 pointer-events-none -translate-y-full"
           )}
         >
-          <div className="flex flex-col space-y-8 text-xl">
+          <div className="flex flex-col space-y-8 text-xl items-center">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -116,6 +137,11 @@ export const Navbar = () => {
             >
               {nextLanguage}
             </button>
+
+            {/* Mobile theme toggle centered */}
+            <div className="flex justify-center w-full mt-4">
+              <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+            </div>
           </div>
         </div>
       </div>
