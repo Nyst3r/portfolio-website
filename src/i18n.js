@@ -138,7 +138,7 @@ i18n
             },
             buttons: {
               contact: "Me Contacter",
-              download: "Télécharger le CV",
+              download: "Télécharger mon CV",
             },
             skills: {
               fullstack: {
