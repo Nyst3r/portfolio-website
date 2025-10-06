@@ -3,10 +3,6 @@
 Welcome to my personal portfolio website, built with **React**, **Vite**, and **TailwindCSS**.  
 You can visit it live at: [nyhanjararandriakoto.com](https://nyhanjararandriakoto.com)
 
----
-
-## English Version
-
 This website showcases my projects, skills, and contact information, with smooth animations and a clean, user-friendly design.
 
 ### Features
