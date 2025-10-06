@@ -92,7 +92,7 @@ export const Navbar = () => {
           {/* Desktop language toggle */}
           <button
             onClick={toggleLanguage}
-            className="px-3 py-1 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background transition"
+            className="px-3 py-1 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background transition cursor-pointer"
           >
             {nextLanguage}
           </button>
@@ -101,7 +101,7 @@ export const Navbar = () => {
         {/* Mobile menu button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 text-foreground z-50"
+          className="md:hidden p-2 text-foreground z-50 cursor-pointer"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -133,7 +133,7 @@ export const Navbar = () => {
                 toggleLanguage();
                 setIsMenuOpen(false);
               }}
-              className="px-4 py-2 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background mt-4"
+              className="px-4 py-2 text-sm border rounded-full border-primary text-primary hover:bg-primary hover:text-background mt-4 cursor-pointer"
             >
               {nextLanguage}
             </button>

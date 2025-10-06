@@ -6,7 +6,7 @@ export const ThemeToggle = ({ isDarkMode, toggleTheme }) => {
     <button
       onClick={toggleTheme}
       className={cn(
-        "p-2 rounded-full transition-colors duration-300",
+        "p-2 rounded-full transition-colors duration-300 cursor-pointer",
         "focus:outline-none"
       )}
     >
